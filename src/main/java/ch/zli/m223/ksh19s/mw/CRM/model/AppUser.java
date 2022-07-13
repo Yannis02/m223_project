@@ -11,9 +11,6 @@ public interface AppUser extends UserDetails {
 
 	public List<Role> getRoles();
 
-	public List<Course> getCourses();
+	public List<Team> getTeams();
 
-	public List<Hobby> getHobbies();
-
-	public List<Work> getWorks();
 }

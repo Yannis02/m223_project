@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ch.zli.m223.ksh19s.mw.CRM.exception.InvalidArgumentException;
-import ch.zli.m223.ksh19s.mw.CRM.exception.UserAllreadyExistsException;
-import ch.zli.m223.ksh19s.mw.CRM.exception.UserNotFoundException;
+import ch.zli.m223.ksh19s.mw.CRM.exception.EntityAlreadyExistsException;
+import ch.zli.m223.ksh19s.mw.CRM.exception.EntityNotFoundException;
 import ch.zli.m223.ksh19s.mw.CRM.model.AppUser;
 import ch.zli.m223.ksh19s.mw.CRM.model.Role;
 import ch.zli.m223.ksh19s.mw.CRM.repository.RoleRepository;
@@ -28,7 +28,7 @@ public class RoleServiceImpl implements RoleService {
 	@Override
 	public Role getRole(Long id) {
 		return roleRepository.findById(id).orElseThrow(() -> {
-			throw new UserNotFoundException("Invalid user Id " + id);
+			throw new EntityNotFoundException("Invalid user Id " + id);
 		});
 	}
 
@@ -37,7 +37,7 @@ public class RoleServiceImpl implements RoleService {
 		if (role == null)
 			throw new InvalidArgumentException("Name must not be null");
 		if (roleRepository.findRoleByRole(role).isPresent()) {
-			throw new UserAllreadyExistsException("Role with name" + role + " already exists");
+			throw new EntityAlreadyExistsException("Role with name" + role + " already exists");
 		}
 		return roleRepository.insert(role, user);
 	}

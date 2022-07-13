@@ -32,23 +32,16 @@ public class AppUserImpl implements AppUser {
 	@OneToMany(mappedBy = "appUser", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<RoleImpl> roles;
 
-	@OneToMany(mappedBy = "appUser", cascade = CascadeType.ALL)
-	private List<CourseImpl> courses;
+	@OneToMany(mappedBy = "appUser", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<TeamImpl> teams;
 
-	@OneToMany(mappedBy = "appUser", cascade = CascadeType.ALL)
-	private List<HobbyImpl> hobbies;
-
-	@OneToMany(mappedBy = "appUser", cascade = CascadeType.ALL)
-	private List<WorkImpl> works;
 
 	private String passwordHash;
 
 	protected AppUserImpl() {
 		/* for JPA only */
 		roles = new ArrayList<>();
-		courses = new ArrayList<>();
-		hobbies = new ArrayList<>();
-		works = new ArrayList<>();
+		teams = new ArrayList<>();
 
 	}
 
@@ -77,33 +70,17 @@ public class AppUserImpl implements AppUser {
 	public void addRoleToList(RoleImpl newRole) {
 		roles.add(newRole);
 	}
-
+	
 	@Override
-	public List<Course> getCourses() {
-		return new ArrayList<>(courses);
+	public List<Team> getTeams() {
+		return new ArrayList<>(teams);
 	}
 
-	public void addCourseToList(CourseImpl newCourse) {
-		courses.add(newCourse);
+	public void addTeamToList(TeamImpl newTeam) {
+		teams.add(newTeam);
 	}
 
-	@Override
-	public List<Hobby> getHobbies() {
-		return new ArrayList<>(hobbies);
-	}
 
-	public void addHobbyToList(HobbyImpl newHobby) {
-		hobbies.add(newHobby);
-	}
-
-	@Override
-	public List<Work> getWorks() {
-		return new ArrayList<>(works);
-	}
-
-	public void addWorkToList(WorkImpl newWork) {
-		works.add(newWork);
-	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

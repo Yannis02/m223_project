@@ -9,33 +9,24 @@ public class UserDto {
 	public Long id;
 	public String email;
 	public List<String> roleList;
-	public List<String> courseList;
-	public List<String> hobbyList;
-	public List<String> workList;
-
+	public List<String> teamList;
+	
 	public UserDto(AppUser user) {
 		id = user.getId();
 		email = user.getEmail();
 		roleList = new ArrayList<>();
-		courseList = new ArrayList<>();
-		hobbyList = new ArrayList<>();
-		workList = new ArrayList<>();
+		teamList = new ArrayList<>();
+		
 
 		for (var role : user.getRoles()) {
 			roleList.add(role.getRole());
 		}
-
-		for (var role : user.getCourses()) {
-			courseList.add(role.getCourse());
+		
+		for (var team : user.getTeams()) {
+			teamList.add(team.getTeam());
 		}
 
-		for (var role : user.getHobbies()) {
-			hobbyList.add(role.getHobby());
-		}
 
-		for (var role : user.getWorks()) {
-			workList.add(role.getWork());
-		}
 
 	}
 }

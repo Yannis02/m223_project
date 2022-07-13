@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ch.zli.m223.ksh19s.mw.CRM.exception.InvalidArgumentException;
-import ch.zli.m223.ksh19s.mw.CRM.exception.UserAllreadyExistsException;
-import ch.zli.m223.ksh19s.mw.CRM.exception.UserNotFoundException;
+import ch.zli.m223.ksh19s.mw.CRM.exception.EntityAlreadyExistsException;
+import ch.zli.m223.ksh19s.mw.CRM.exception.EntityNotFoundException;
 import ch.zli.m223.ksh19s.mw.CRM.model.AppUser;
 import ch.zli.m223.ksh19s.mw.CRM.repository.UserRepository;
 
@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public AppUser getUser(Long id) {
 		return userRepository.findById(id).orElseThrow(() -> {
-			throw new UserNotFoundException("Invalid user Id " + id);
+			throw new EntityNotFoundException("Invalid user Id " + id);
 		});
 	}
 
@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
 			throw new InvalidArgumentException("Name must not be null");
 		// If (user with userName exists) then throw UserAllreadyExistsException
 		if (userRepository.findUserByName(name).isPresent()) {
-			throw new UserAllreadyExistsException("User with name" + name + " already exists");
+			throw new EntityAlreadyExistsException("User with name" + name + " already exists");
 		}
 		return userRepository.insert(name, password);
 	}

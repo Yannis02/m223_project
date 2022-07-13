@@ -1,9 +1,7 @@
 package ch.zli.m223.ksh19s.mw.CRM.model;
 
-public interface Work {
-
+public interface Team {
 	public Long getId();
-
-	public String getWork();
+	public String getTeam();
 
 }

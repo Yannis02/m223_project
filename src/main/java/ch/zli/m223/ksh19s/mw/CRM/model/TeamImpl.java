@@ -6,25 +6,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-@Entity(name = "Work")
-public class WorkImpl implements Work {
+@Entity(name="Team")
+public class TeamImpl implements Team {
 
-	@Id // damit datenbank diesen als primary key setzt
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	private String work;
-
+	
+	private String team;
+	
 	@ManyToOne
 	private AppUserImpl appUser;
-
-	protected WorkImpl() {
-		/* for JPA only */}
-
-	public WorkImpl(String work, AppUserImpl appUser) {
-		this.work = work;
-		this.appUser = appUser;
-	}
 
 	@Override
 	public Long getId() {
@@ -32,8 +24,14 @@ public class WorkImpl implements Work {
 	}
 
 	@Override
-	public String getWork() {
-		return work;
+	public String getTeam() {
+		return team;
 	}
 
+	protected TeamImpl() {/*for JPA only*/}
+	
+	public TeamImpl(String team, AppUserImpl appUser) {
+		this.team = team;
+		this.appUser = appUser;
+	}
 }
