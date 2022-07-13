@@ -12,5 +12,7 @@ public interface AppUser extends UserDetails {
 	public List<Role> getRoles();
 
 	public List<Team> getTeams();
+	
+	public List<Injury> getInjuries();
 
 }

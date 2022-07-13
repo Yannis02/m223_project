@@ -8,7 +8,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import ch.zli.m223.ksh19s.mw.CRM.model.AppUser;
-
+import ch.zli.m223.ksh19s.mw.CRM.repository.InjuryRepository;
 import ch.zli.m223.ksh19s.mw.CRM.repository.RoleRepository;
 import ch.zli.m223.ksh19s.mw.CRM.repository.TeamRepository;
 import ch.zli.m223.ksh19s.mw.CRM.repository.UserRepository;

@@ -10,7 +10,7 @@ public interface TeamService {
 
 	Team getTeam(Long id);
 
-	Team insertTeam(String role);
+	Team insertTeam(String injury);
 
 	void deleteTeamById(Long id);
 

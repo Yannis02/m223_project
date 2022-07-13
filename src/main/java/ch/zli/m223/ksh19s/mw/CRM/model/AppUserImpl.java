@@ -34,6 +34,9 @@ public class AppUserImpl implements AppUser {
 
 	@OneToMany(mappedBy = "appUser", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<TeamImpl> teams;
+	
+	@OneToMany(mappedBy = "appUser", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<InjuryImpl> injuries;
 
 
 	private String passwordHash;
@@ -42,6 +45,7 @@ public class AppUserImpl implements AppUser {
 		/* for JPA only */
 		roles = new ArrayList<>();
 		teams = new ArrayList<>();
+		injuries = new ArrayList<>();
 
 	}
 
@@ -78,6 +82,15 @@ public class AppUserImpl implements AppUser {
 
 	public void addTeamToList(TeamImpl newTeam) {
 		teams.add(newTeam);
+	}
+	
+	@Override
+	public List<Injury> getInjuries() {
+		return new ArrayList<>(injuries);
+	}
+
+	public void addInjuryToList(InjuryImpl newInjury) {
+		injuries.add(newInjury);
 	}
 
 

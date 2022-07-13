@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import ch.zli.m223.ksh19s.mw.CRM.controller.dto.InjuryDto;
 import ch.zli.m223.ksh19s.mw.CRM.controller.dto.RoleDto;
 import ch.zli.m223.ksh19s.mw.CRM.controller.dto.TeamDto;
 import ch.zli.m223.ksh19s.mw.CRM.controller.dto.UserDto;
