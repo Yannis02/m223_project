@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import ch.zli.m223.ksh19s.mw.CRM.roles.AppRoles;
+import ch.zli.m223.ksh19s.mw.CRM.data.Roles;
 
 @SuppressWarnings("deprecation")
 @EnableWebSecurity
@@ -34,8 +34,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	}
 
 	private void configureWeb(HttpSecurity http) throws Exception {
-		http.authorizeHttpRequests().antMatchers("/").permitAll().antMatchers("/admin/**").hasAuthority(AppRoles.ADMIN)
-				.antMatchers("/user/**").hasAnyAuthority(AppRoles.USER).antMatchers("/logedin").authenticated().and()
+		http.authorizeHttpRequests().antMatchers("/").permitAll().antMatchers("/admin/**").hasAuthority(Roles.ADMIN)
+				.antMatchers("/user/**").hasAnyAuthority(Roles.USER).antMatchers("/logedin").authenticated().and()
 				.formLogin().permitAll() // loginpage zugänglich für jeden
 				.and().logout().permitAll(); // logoutpage zugänglich für jeden
 	}

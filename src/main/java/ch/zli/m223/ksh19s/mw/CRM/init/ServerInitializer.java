@@ -7,13 +7,15 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import ch.zli.m223.ksh19s.mw.CRM.data.Injuries;
+import ch.zli.m223.ksh19s.mw.CRM.data.Names;
+import ch.zli.m223.ksh19s.mw.CRM.data.Roles;
+import ch.zli.m223.ksh19s.mw.CRM.data.Teams;
 import ch.zli.m223.ksh19s.mw.CRM.model.AppUser;
 import ch.zli.m223.ksh19s.mw.CRM.repository.InjuryRepository;
 import ch.zli.m223.ksh19s.mw.CRM.repository.RoleRepository;
 import ch.zli.m223.ksh19s.mw.CRM.repository.TeamRepository;
 import ch.zli.m223.ksh19s.mw.CRM.repository.UserRepository;
-
-import ch.zli.m223.ksh19s.mw.CRM.roles.AppRoles;
 
 @Component
 public class ServerInitializer implements ApplicationRunner {
@@ -31,23 +33,31 @@ public class ServerInitializer implements ApplicationRunner {
 	@Override
 	@Transactional
 	public void run(ApplicationArguments args) throws Exception {
-		AppUser brady = userRepository.insert("Tom Brady", "1234");
-		roleRepository.insert(AppRoles.ADMIN, brady);
-		roleRepository.insert(AppRoles.USER, brady);
+		AppUser brady = userRepository.insert(Names.TOMBRADY, "1234");
+		roleRepository.insert(Roles.ADMIN, brady);
+		roleRepository.insert(Roles.USER, brady);
 		
-		teamRepository.insert("Tampa Bay Buccaneers", brady);
+		teamRepository.insert(Teams.BUCCANEERS, brady);
 		
-		injuryRepository.insert("Left knee contusion", brady);
-		injuryRepository.insert("Broken ribs", brady);
+		injuryRepository.insert(Injuries.LEFTKNEECONTUSION, brady);
+		injuryRepository.insert(Injuries.BROKENRIBS, brady);
 
-		AppUser jones = userRepository.insert("Mac Jones", "1234");
-		roleRepository.insert(AppRoles.USER, jones);
+		AppUser jones = userRepository.insert(Names.MACJONES, "1234");
+		roleRepository.insert(Roles.USER, jones);
 		
-		teamRepository.insert("New England Patriots", jones);
+		teamRepository.insert(Teams.PATRIOTS, jones);
 		
-		injuryRepository.insert("Torn ACL", jones);
-		injuryRepository.insert("Concussion", jones);
-		injuryRepository.insert("Broken finger", jones);
+		injuryRepository.insert(Injuries.TORNACL, jones);
+		injuryRepository.insert(Injuries.CONCUSSION, jones);
+		injuryRepository.insert(Injuries.BROKENFINGER, jones);
+		
+		AppUser ramsey = userRepository.insert(Names.JALENRAMSEY, "1234");
+		roleRepository.insert(Roles.USER, ramsey);
+		
+		teamRepository.insert(Teams.RAMS, ramsey);
+		
+		injuryRepository.insert(Injuries.TORNACL, ramsey);
+		injuryRepository.insert(Injuries.LEFTKNEECONTUSION, ramsey);
 
 
 	}
