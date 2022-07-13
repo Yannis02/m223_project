@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ch.zli.m223.ksh19s.mw.CRM.controller.dto.RoleDTO;
+import ch.zli.m223.ksh19s.mw.CRM.controller.dto.RoleDto;
 import ch.zli.m223.ksh19s.mw.CRM.controller.dto.UserDto;
 import ch.zli.m223.ksh19s.mw.CRM.controller.dto.UserInputDto;
 import ch.zli.m223.ksh19s.mw.CRM.service.UserService;
@@ -45,8 +45,8 @@ public class UserRestController {
 	}
 
 	@GetMapping("/users/{id}/roles")
-	List<RoleDTO> getRolesForUser(@PathVariable("id") Long id) {
+	List<RoleDto> getRolesForUser(@PathVariable("id") Long id) {
 		var user = userService.getUser(id);
-		return user.getRoles().stream().map(r -> new RoleDTO(r)).collect(Collectors.toList());
+		return user.getRoles().stream().map(r -> new RoleDto(r)).collect(Collectors.toList());
 	}
 }
