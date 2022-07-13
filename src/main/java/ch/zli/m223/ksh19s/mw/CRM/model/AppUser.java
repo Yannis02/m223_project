@@ -8,6 +8,8 @@ public interface AppUser extends UserDetails {
 	public Long getId();
 
 	public String getEmail();
+	
+	public String getName();
 
 	public List<Role> getRoles();
 

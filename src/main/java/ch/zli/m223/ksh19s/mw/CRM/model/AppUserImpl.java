@@ -32,10 +32,10 @@ public class AppUserImpl implements AppUser {
 	@OneToMany(mappedBy = "appUser", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<RoleImpl> roles;
 
-	@OneToMany(mappedBy = "appUser", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "appUser", cascade = CascadeType.ALL)
 	private List<TeamImpl> teams;
 	
-	@OneToMany(mappedBy = "appUser", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "appUser", cascade = CascadeType.ALL)
 	private List<InjuryImpl> injuries;
 
 
@@ -63,6 +63,11 @@ public class AppUserImpl implements AppUser {
 
 	@Override
 	public String getEmail() {
+		return name;
+	}
+	
+	@Override
+	public String getName() {
 		return name;
 	}
 

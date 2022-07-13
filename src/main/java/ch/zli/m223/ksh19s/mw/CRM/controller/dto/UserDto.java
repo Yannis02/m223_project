@@ -7,15 +7,19 @@ import ch.zli.m223.ksh19s.mw.CRM.model.AppUser;
 
 public class UserDto {
 	public Long id;
-	public String email;
+	public String name;
+	//public String email;
 	public List<String> roleList;
 	public List<String> teamList;
+	public List<String> injuryList;
 	
 	public UserDto(AppUser user) {
 		id = user.getId();
-		email = user.getEmail();
+		//email = user.getEmail();
+		name = user.getName();
 		roleList = new ArrayList<>();
 		teamList = new ArrayList<>();
+		injuryList = new ArrayList<>();
 		
 
 		for (var role : user.getRoles()) {
@@ -24,6 +28,10 @@ public class UserDto {
 		
 		for (var team : user.getTeams()) {
 			teamList.add(team.getTeam());
+		}
+		
+		for (var injury : user.getInjuries()) {
+			injuryList.add(injury.getInjury());
 		}
 
 
