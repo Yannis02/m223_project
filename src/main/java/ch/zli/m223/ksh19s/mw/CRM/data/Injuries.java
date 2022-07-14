@@ -1,5 +1,10 @@
 package ch.zli.m223.ksh19s.mw.CRM.data;
 
+/**
+ * List of injuries
+ * @author Yannis Lee
+ *
+ */
 public interface Injuries {
 	
 	public static final String LEFTKNEECONTUSION = "Left knee contusion";

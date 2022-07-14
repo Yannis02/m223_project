@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Add new user</title>
+	
+	<meta name="viewport" content="width=device-width initial-scale=1" />
+	
+	<!-- Thymeleaf -->
+	<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+	
+	
+			<form th:action="@{/web/saveUser}" method="post">
+				<fieldset>
+					<h1>Neuer Benutzer erstellen</h1>
+				
+			
+					
+
+					
+						<input type="text" name="username" id="username"
+							th:value="${username}" placeholder="Benutzername" required="true"
+							autofocus="true" />
+				
+					
+						<input type="password" name="password" id="password"
+							th:value="${password}" placeholder="Passwort" required="true" />
+							<h3>Roles</h3>
+							<ul>
+							<li th:each="role : ${T(ch.zli.m223.ksh19s.mw.CRM.data.Roles).ALL_ROLES}">
+						  		<input type="checkbox" th:text="${role}" th:value="${role}" th:name="rolenames"/>
+							</li>
+						</ul>
+						<h3>Teams</h3>
+						<ul>
+						<li th:each="team : ${T(ch.zli.m223.ksh19s.mw.CRM.data.Teams).ALL_TEAMS}">
+						  		<input type="checkbox" th:text="${team}" th:value="${team}" th:name="teamnames"/>
+							</li>
+						</ul>
+						<h3>Injuries</h3>
+						<ul>
+						<li th:each="injury : ${T(ch.zli.m223.ksh19s.mw.CRM.data.Injuries).ALL_INJURIES}">
+						  		<input type="checkbox" th:text="${injury}" th:value="${injury}" th:name="injurynames"/>
+							</li>
+						</ul>
+					<p>
+						<input type="submit" value="Erstellen" />
+					</p>
+				</fieldset>
+			</form>
+		
+
+</body>
+</html>

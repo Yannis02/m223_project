@@ -11,13 +11,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ch.zli.m223.ksh19s.mw.CRM.model.Team;
 import ch.zli.m223.ksh19s.mw.CRM.service.TeamService;
 
+/**
+ * Class to control the entity "team" via the web
+ * @author Yannis Lee
+ *
+ */
 @Controller
 @RequestMapping("/web")
 public class TeamWebController {
 	@Autowired
 	private TeamService teamService;
 
-	
+	/**
+	 * Gets a list of all the teams
+	 * @param model
+	 * @return "teamList"
+	 */
 	@GetMapping("/teams")
 	String getTeamList(Model model) {
 		List<Team> teamList = teamService.getAllTeams();

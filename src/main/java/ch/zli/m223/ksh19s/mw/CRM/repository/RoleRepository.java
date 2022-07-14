@@ -9,8 +9,19 @@ import ch.zli.m223.ksh19s.mw.CRM.model.AppUserImpl;
 import ch.zli.m223.ksh19s.mw.CRM.model.Role;
 import ch.zli.m223.ksh19s.mw.CRM.model.RoleImpl;
 
+/**
+ * Repository of the role
+ * @author Yannis Lee
+ *
+ */
 public interface RoleRepository extends JpaRepository<RoleImpl, Long> {
 
+	/**
+	 * Inserts a role
+	 * @param roleName
+	 * @param appUser
+	 * @return savedNewRole
+	 */
 	default Role insert(String roleName, AppUser appUser) {
 		// cast to Impl
 		AppUserImpl userImpl = (AppUserImpl) appUser;

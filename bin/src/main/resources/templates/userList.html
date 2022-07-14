@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+
+<head>
+<title>Users</title>
+ <link rel="stylesheet" href="style.css">
+</head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#gray {
+background-color: #dddddd;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+
+</style>
+<body>
+<h1>Users</h1>
+<table >
+
+	<tr>
+		<thead>
+			<th id="gray">ID</th>
+			<th id="gray">Name</th>
+			<th id="gray">Role</th>
+			<th id="gray">Team</th>
+			<th id="gray">Injury</th>
+			<th id="gray"></th>
+
+		</thead>
+	
+
+<tbody>
+	<tr th:each = "user : ${users}">
+		<td th:text = "${user.id}">user_id</td>
+		<td th:text = "${user.name}">user_name</td>
+		<td>
+<table >
+	<tr th:each = "user : ${users}">
+	<tr th:each = "role : ${user.roles}">
+		<th th:text = "${role.role}">ID</th>
+</table>
+		</td>
+		<td>
+<table>
+	<tr th:each = "user : ${users}">
+	<tr th:each = "team : ${user.teams}">
+		<th th:text = "${team.team}">ID</th>
+</table>
+		</td>
+		<td>
+<table>
+	<tr th:each = "user : ${users}">
+	<tr th:each = "injury : ${user.injuries}">
+		<th th:text = "${injury.injury}">ID</th>
+</table>
+		</td>
+		<td>
+
+
+		<a th:href="@{'/web/deleteUser/'+${user.id}}">Delete</a>
+
+		</td>
+	</tr>
+</tbody>
+
+</table>
+
+<form th:action="@{/web/addNewUser}" method="post">			
+	<p><input type="submit" value="Add user"/></p>
+</form>
+
+</body>
+</html>

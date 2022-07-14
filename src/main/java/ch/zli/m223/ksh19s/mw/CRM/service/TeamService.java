@@ -4,6 +4,11 @@ import java.util.List;
 
 import ch.zli.m223.ksh19s.mw.CRM.model.Team;
 
+/**
+ * Interface for the TeamService
+ * @author Yannis Lee
+ *
+ */
 public interface TeamService {
 	
 	List<Team> getAllTeams();
@@ -13,5 +18,4 @@ public interface TeamService {
 	Team insertTeam(String injury);
 
 	void deleteTeamById(Long id);
-
 }

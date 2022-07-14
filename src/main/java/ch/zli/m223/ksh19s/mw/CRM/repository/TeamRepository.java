@@ -9,8 +9,19 @@ import ch.zli.m223.ksh19s.mw.CRM.model.AppUserImpl;
 import ch.zli.m223.ksh19s.mw.CRM.model.Team;
 import ch.zli.m223.ksh19s.mw.CRM.model.TeamImpl;
 
+/**
+ * Repository of the team
+ * @author Yannis Lee
+ *
+ */
 public interface TeamRepository extends JpaRepository<TeamImpl, Long>{
 	
+	/**
+	 * Inserts a team
+	 * @param teamName
+	 * @param appUser
+	 * @return savedNewTeam
+	 */
 	default Team insert(String teamName, AppUser appUser) {
 		
 			// cast to Impl

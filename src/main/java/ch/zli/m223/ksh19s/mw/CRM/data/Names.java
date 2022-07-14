@@ -1,6 +1,13 @@
 package ch.zli.m223.ksh19s.mw.CRM.data;
 
+/**
+ * List of names
+ * @author Yannis Lee
+ *
+ */
 public interface Names {
+	
+	public static final String ADMIN = "admin";
 	public static final String AARONRODGERS = "Aaron Rodgers";
 	public static final String AARONDONALD = "Aaron Donald";
 	public static final String TOMBRADY = "Tom Brady";

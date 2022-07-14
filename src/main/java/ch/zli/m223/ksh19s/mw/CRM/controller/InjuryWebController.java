@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ch.zli.m223.ksh19s.mw.CRM.model.Injury;
 import ch.zli.m223.ksh19s.mw.CRM.service.InjuryService;
 
+/**
+ * Class to control the entity "injury" via the web
+ * @author Yannis Lee
+ *
+ */
 @Controller
 @RequestMapping("/web")
 public class InjuryWebController {
@@ -18,6 +23,11 @@ public class InjuryWebController {
 	private InjuryService injuryService;
 
 	
+	/**
+	 * Gets all injuries
+	 * @param model
+	 * @return "injuryList"
+	 */
 	@GetMapping("/injuries")
 	String getInjuryList(Model model) {
 		List<Injury> injuryList = injuryService.getAllInjuries();

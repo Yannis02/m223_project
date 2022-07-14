@@ -2,8 +2,8 @@
 <html>
 
 <head>
-<title>Teams</title>
- <link rel="stylesheet" href="style.css">
+	<title>Teams</title>
+ 		<link rel="stylesheet" href="style.css">
 </head>
 <style>
 table {
@@ -23,27 +23,20 @@ tr:nth-child(even) {
 }
 </style>
 <body>
-<h1>Teams</h1>
-<table >
-
-<tr>
-<thead>
-<th>ID</th>
-<th>Teamname</th>
-</tr>
-</thead>
-
+	<h1>Teams</h1>
+		<table >
+			<tr>
+				<thead>
+					<th>ID</th>
+					<th>Teamname</th>
+			</tr>
+				</thead>
 <tbody>
-<tr th:each = "team : ${teams}">
-<td th:text = "${team.id}">team_id</td>
-<td th:text = "${team.team}">team_name</td>
-</tr>
+	<tr th:each = "team : ${teams}">
+	<td th:text = "${team.id}">team_id</td>
+	<td th:text = "${team.team}">team_name</td>
+			</tr>
 </tbody>
-
-</table>
-
-
-
-
+		</table>
 </body>
 </html>

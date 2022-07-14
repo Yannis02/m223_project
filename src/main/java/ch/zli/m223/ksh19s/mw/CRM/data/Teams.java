@@ -1,5 +1,10 @@
 package ch.zli.m223.ksh19s.mw.CRM.data;
 
+/**
+ * List of teams
+ * @author Yannis Lee
+ *
+ */
 public interface Teams {
 	
 	public static final String CARDINALS = "Arizona Cardinals";

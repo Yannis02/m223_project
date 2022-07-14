@@ -18,6 +18,11 @@ import ch.zli.m223.ksh19s.mw.CRM.controller.dto.UserDto;
 import ch.zli.m223.ksh19s.mw.CRM.controller.dto.UserInputDto;
 import ch.zli.m223.ksh19s.mw.CRM.service.RoleService;
 
+/**
+ * Class to control the entity "role"
+ * @author Yannis Lee
+ *
+ */
 @RestController
 @RequestMapping("/api/v1")
 public class RoleRestController {
@@ -25,21 +30,39 @@ public class RoleRestController {
 	@Autowired
 	private RoleService roleService;
 
+	/**
+	 * Gets all roles
+	 * @return List<RoleDto>
+	 */
 	@GetMapping("/roles")
 	List<RoleDto> getAllRoles() {
 		return roleService.getAllRoles().stream().map(role -> new RoleDto(role)).collect(Collectors.toList());
 	}
 
+	/**
+	 * Gets a role
+	 * @param id
+	 * @return RoleDto
+	 */
 	@GetMapping("/roles/{id}")
 	RoleDto getRole(@PathVariable("id") Long id) {
 		return new RoleDto(roleService.getRole(id));
 	}
 
+	/**
+	 * Inserts a role
+	 * @param roleData
+	 * @return RoleDto
+	 */
 	@PostMapping("/roles")
 	RoleDto insertRole(@RequestBody RoleInputDto roleData) {
 		return new RoleDto(roleService.insertRole(roleData.name));
 	}
 
+	/**
+	 * Deletes a role
+	 * @param id
+	 */
 	@DeleteMapping("/roles/{id}")
 	void deleteRole(@PathVariable("id") Long id) {
 		roleService.deleteRoleById(id);

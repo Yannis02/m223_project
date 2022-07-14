@@ -5,17 +5,25 @@ import java.util.List;
 
 import ch.zli.m223.ksh19s.mw.CRM.model.AppUser;
 
+/**
+ * Data transfer object for "user"
+ * @author Yannis Lee
+ *
+ */
 public class UserDto {
+	
 	public Long id;
 	public String name;
-	//public String email;
 	public List<String> roleList;
 	public List<String> teamList;
 	public List<String> injuryList;
 	
+	/**
+	 * Constructor for UserDto
+	 * @param user
+	 */
 	public UserDto(AppUser user) {
 		id = user.getId();
-		//email = user.getEmail();
 		name = user.getName();
 		roleList = new ArrayList<>();
 		teamList = new ArrayList<>();

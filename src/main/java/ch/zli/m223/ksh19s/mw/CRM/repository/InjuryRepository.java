@@ -11,8 +11,19 @@ import ch.zli.m223.ksh19s.mw.CRM.model.InjuryImpl;
 import ch.zli.m223.ksh19s.mw.CRM.model.Team;
 import ch.zli.m223.ksh19s.mw.CRM.model.TeamImpl;
 
+/**
+ * Repository of the injury
+ * @author Yannis Lee
+ *
+ */
 public interface InjuryRepository extends JpaRepository<InjuryImpl, Long>{
 	
+	/**
+	 * Insert of an injury
+	 * @param typeofInjury
+	 * @param appUser
+	 * @return savedNewInjury
+	 */
 	default Injury insert(String typeofInjury, AppUser appUser) {
 		
 		// cast to Impl

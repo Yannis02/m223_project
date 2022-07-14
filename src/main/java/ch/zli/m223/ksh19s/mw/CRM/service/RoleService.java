@@ -4,6 +4,11 @@ import java.util.List;
 
 import ch.zli.m223.ksh19s.mw.CRM.model.Role;
 
+/**
+ * Interface for the RoleService
+ * @author Yannis Lee
+ *
+ */
 public interface RoleService {
 
 	List<Role> getAllRoles();
@@ -13,5 +18,4 @@ public interface RoleService {
 	Role insertRole(String role);
 
 	void deleteRoleById(Long id);
-
 }

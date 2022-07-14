@@ -12,6 +12,11 @@ import ch.zli.m223.ksh19s.mw.CRM.model.AppUser;
 import ch.zli.m223.ksh19s.mw.CRM.model.Injury;
 import ch.zli.m223.ksh19s.mw.CRM.repository.InjuryRepository;
 
+/**
+ * Implementation of the InjuryService
+ * @author Yannis Lee
+ *
+ */
 @Service
 public class InjuryServiceImpl implements InjuryService{
 	
@@ -19,11 +24,20 @@ public class InjuryServiceImpl implements InjuryService{
 	private InjuryRepository injuryRepository;
 	private AppUser user;
 
+	/**
+	 * Gets all the injuries
+	 * @return List<Injury>
+	 */
 	@Override
 	public List<Injury> getAllInjuries() {
 		return new ArrayList<>(injuryRepository.findAll());
 	}
 
+	/**
+	 * Gets an injury
+	 * @param id
+	 * @return Injury
+	 */
 	@Override
 	public Injury getInjury(Long id) {
 		return injuryRepository.findById(id).orElseThrow(() -> {
@@ -31,6 +45,11 @@ public class InjuryServiceImpl implements InjuryService{
 		});
 	}
 
+	/**
+	 * Inserts an injury
+	 * @param injury
+	 * @return Injury
+	 */
 	@Override
 	public Injury insertInjury(String injury) {
 		if (injury == null)
@@ -39,6 +58,10 @@ public class InjuryServiceImpl implements InjuryService{
 		return injuryRepository.insert(injury, user);
 	}
 
+	/**
+	 * Deletes an injury by its id
+	 * @param id
+	 */
 	@Override
 	public void deleteInjuryById(Long id) {
 		if (id == null)
@@ -48,5 +71,4 @@ public class InjuryServiceImpl implements InjuryService{
 		}
 		injuryRepository.deleteById(id);
 	}
-
 }

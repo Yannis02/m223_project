@@ -9,6 +9,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import ch.zli.m223.ksh19s.mw.CRM.data.Roles;
 
+/**
+ * Configuration for the security of the application
+ * @author Yannis Lee
+ *
+ */
 @SuppressWarnings("deprecation")
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -16,30 +21,52 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 	UserDetailsService userDetailsService;
 	BCryptPasswordEncoder bcriptPasswordEncoder;
 
+	/**
+	 * Constructor for WebSecurityConfiguration
+	 * @param userDetailsService
+	 * @param bcriptPasswordEncoder
+	 */
 	public WebSecurityConfiguration(UserDetailsService userDetailsService,
 			BCryptPasswordEncoder bcriptPasswordEncoder) {
 		this.userDetailsService = userDetailsService;
 		this.bcriptPasswordEncoder = bcriptPasswordEncoder;
 	}
 
+	/**
+	 * Configures the password
+	 */
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(bcriptPasswordEncoder);
 	}
 
+	/**
+	 * Configures the authorities of rest and web
+	 */
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		configureWeb(http);
 		configureRest(http);
 	}
 
+	/**
+	 * Configures the authorities of the web
+	 * @param http
+	 * @throws Exception
+	 */
 	private void configureWeb(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests().antMatchers("/").permitAll().antMatchers("/admin/**").hasAuthority(Roles.ADMIN)
+				.antMatchers("/web/**").hasAuthority(Roles.ADMIN)
 				.antMatchers("/user/**").hasAnyAuthority(Roles.USER).antMatchers("/logedin").authenticated().and()
 				.formLogin().permitAll() // loginpage zugänglich für jeden
 				.and().logout().permitAll(); // logoutpage zugänglich für jeden
 	}
 
+	/**
+	 * Configures the authorities of rest
+	 * @param http
+	 * @throws Exception
+	 */
 	private void configureRest(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests()
                 .antMatchers("/").permitAll()
@@ -50,5 +77,4 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout().permitAll();
     }
-
 }

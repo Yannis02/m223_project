@@ -13,6 +13,11 @@ import ch.zli.m223.ksh19s.mw.CRM.model.AppUser;
 import ch.zli.m223.ksh19s.mw.CRM.model.Role;
 import ch.zli.m223.ksh19s.mw.CRM.repository.RoleRepository;
 
+/**
+ * Implementation of the RoleService
+ * @author Yannis Lee
+ *
+ */
 @Service
 public class RoleServiceImpl implements RoleService {
 
@@ -20,11 +25,20 @@ public class RoleServiceImpl implements RoleService {
 	private RoleRepository roleRepository;
 	private AppUser user;
 
+	/**
+	 * Gets all the roles
+	 * @return List<Role>
+	 */
 	@Override
 	public List<Role> getAllRoles() {
 		return new ArrayList<>(roleRepository.findAll());
 	}
 
+	/**
+	 * Gets a role
+	 * @param id
+	 * @return Role
+	 */
 	@Override
 	public Role getRole(Long id) {
 		return roleRepository.findById(id).orElseThrow(() -> {
@@ -32,6 +46,11 @@ public class RoleServiceImpl implements RoleService {
 		});
 	}
 
+	/**
+	 * Inserts a role
+	 * @param role
+	 * @return Role
+	 */
 	@Override
 	public Role insertRole(String role) {
 		if (role == null)
@@ -42,6 +61,10 @@ public class RoleServiceImpl implements RoleService {
 		return roleRepository.insert(role, user);
 	}
 
+	/**
+	 * Deletes a role by its id
+	 * @param id
+	 */
 	@Override
 	public void deleteRoleById(Long id) {
 		if (id == null)
@@ -51,5 +74,4 @@ public class RoleServiceImpl implements RoleService {
 		}
 		roleRepository.deleteById(id);
 	}
-
 }

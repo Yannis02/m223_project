@@ -13,6 +13,11 @@ import ch.zli.m223.ksh19s.mw.CRM.model.AppUser;
 import ch.zli.m223.ksh19s.mw.CRM.model.Team;
 import ch.zli.m223.ksh19s.mw.CRM.repository.TeamRepository;
 
+/**
+ * Implementation of TeamService
+ * @author Yannis Lee
+ *
+ */
 @Service
 public class TeamServiceImpl implements TeamService {
 
@@ -20,11 +25,20 @@ public class TeamServiceImpl implements TeamService {
 	private TeamRepository teamRepository;
 	private AppUser user;
 
+	/**
+	 * Gets all the teams
+	 * @return List<Team>
+	 */
 	@Override
 	public List<Team> getAllTeams() {
 		return new ArrayList<>(teamRepository.findAll());
 	}
 
+	/**
+	 * Gets a team by its id
+	 * @param id
+	 * @return Team
+	 */
 	@Override
 	public Team getTeam(Long id) {
 		return teamRepository.findById(id).orElseThrow(() -> {
@@ -32,6 +46,11 @@ public class TeamServiceImpl implements TeamService {
 		});
 	}
 
+	/**
+	 * Inserts a team
+	 * @param team
+	 * @return Team
+	 */
 	@Override
 	public Team insertTeam(String team) {
 		if (team == null)
@@ -42,6 +61,10 @@ public class TeamServiceImpl implements TeamService {
 		return teamRepository.insert(team, user);
 	}
 
+	/**
+	 * Deletes a team by its id
+	 * @param id
+	 */
 	@Override
 	public void deleteTeamById(Long id) {
 		if (id == null)
@@ -51,5 +74,4 @@ public class TeamServiceImpl implements TeamService {
 		}
 		teamRepository.deleteById(id);
 	}
-
 }
