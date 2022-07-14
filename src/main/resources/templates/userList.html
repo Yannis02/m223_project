@@ -24,70 +24,59 @@ td, th {
 
 
 </style>
-
-<script>
-function getId() {
-	var startLink = "http://localhost:8080/web/deleteUser/";
-    var id = prompt("Id of user to be deleted");
-    if(id === null  || id == "") {
-        alert('Please enter an id');
-        return false;
-    }
-    else if (id != null) {
-        var link = startLink + id;
-        console.log(link);
-        window.location.href=link;
-        return true;
-    }
-}
-</script>
-
 <body>
 <h1>Users</h1>
 <table >
 
-<tr>
-<thead>
-<th id="gray">ID</th>
-<th id="gray">Name</th>
-<th id="gray">Role</th>
-<th id="gray">Team</th>
-<th id="gray">Injury</th>
-</tr>
-</thead>
+	<tr>
+		<thead>
+			<th id="gray">ID</th>
+			<th id="gray">Name</th>
+			<th id="gray">Role</th>
+			<th id="gray">Team</th>
+			<th id="gray">Injury</th>
+			<th id="gray"></th>
+
+		</thead>
+	
 
 <tbody>
-<tr th:each = "user : ${users}">
-<td th:text = "${user.id}">user_id</td>
-<td th:text = "${user.name}">user_name</td>
-<td>
+	<tr th:each = "user : ${users}">
+		<td th:text = "${user.id}">user_id</td>
+		<td th:text = "${user.name}">user_name</td>
+		<td>
 <table >
-<tr th:each = "user : ${users}">
-<tr th:each = "role : ${user.roles}">
-<th th:text = "${role.role}">ID</th>
+	<tr th:each = "user : ${users}">
+	<tr th:each = "role : ${user.roles}">
+		<th th:text = "${role.role}">ID</th>
 </table>
-</td>
-<td>
+		</td>
+		<td>
 <table>
-<tr th:each = "user : ${users}">
-<tr th:each = "team : ${user.teams}">
-<th th:text = "${team.team}">ID</th>
+	<tr th:each = "user : ${users}">
+	<tr th:each = "team : ${user.teams}">
+		<th th:text = "${team.team}">ID</th>
 </table>
-</td>
-<td>
+		</td>
+		<td>
 <table>
-<tr th:each = "user : ${users}">
-<tr th:each = "injury : ${user.injuries}">
-<th th:text = "${injury.injury}">ID</th>
+	<tr th:each = "user : ${users}">
+	<tr th:each = "injury : ${user.injuries}">
+		<th th:text = "${injury.injury}">ID</th>
 </table>
-</td>
-</tr>
+		</td>
+		<td>
+
+
+		<a th:href="@{'/web/deleteUser/'+${user.id}}">Delete</a>
+
+		</td>
+	</tr>
 </tbody>
 
 </table>
 
 <button>Add</button>
-<button type="button" onclick=getId() >Delete</button>
 
 </body>
 </html>
