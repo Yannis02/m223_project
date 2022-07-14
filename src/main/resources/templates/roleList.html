@@ -2,7 +2,7 @@
 <html>
 
 <head>
-<title>Users</title>
+<title>Roles</title>
  <link rel="stylesheet" href="style.css">
 </head>
 <style>
@@ -23,20 +23,20 @@ tr:nth-child(even) {
 }
 </style>
 <body>
-<h1>Application User</h1>
+<h1>Roles</h1>
 <table >
 
 <tr>
 <thead>
 <th>ID</th>
-<th>Name</th>
+<th>Rolename</th>
 </tr>
 </thead>
 
 <tbody>
-<tr th:each = "user : ${users}">
-<td th:text = "${user.id}">user_id</td>
-<td th:text = "${user.name}">user_name</td>
+<tr th:each = "role : ${roles}">
+<td th:text = "${role.id}">role_id</td>
+<td th:text = "${role.role}">role_name</td>
 </tr>
 </tbody>
 
