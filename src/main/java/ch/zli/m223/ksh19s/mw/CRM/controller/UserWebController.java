@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import ch.zli.m223.ksh19s.mw.CRM.controller.dto.UserDto;
 import ch.zli.m223.ksh19s.mw.CRM.model.AppUser;
@@ -44,6 +46,36 @@ public class UserWebController {
 	String deleteUser(@PathVariable("id") Long id) {
 		userService.deleteUserById(id);
 		return "redirect:/web/users";
+	}
+	
+	@RequestMapping("/web/saveUser")
+	public String saveNewUser(Model model, 
+		@RequestParam("username") String name,
+		@RequestParam("password") String password
+		//@RequestParam(value="rolenames", defaultValue="") String[] roles
+		)
+	{
+		// create a new user
+		AppUser user = userService.insertUser(name, password);
+		if (user == null) {
+			// Show the form again
+			model.addAttribute("error", "userName already exists");
+			model.addAttribute("username", name);
+			model.addAttribute("password", password);
+			return "showUserNewForm";
+		}
+		return "redirect:/web/showUsers";
+	}
+	
+	@RequestMapping("/web/addNewUser")
+	public String addNewUser(Model model) {
+		return "showUserNewForm";
+	}
+	
+	@RequestMapping("/web/showUsers")
+		public String showUsers(Model model){
+		model.addAttribute("users", userService.getAllUsers());
+		return "userList";
 	}
 
 }

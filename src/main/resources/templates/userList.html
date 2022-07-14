@@ -76,7 +76,9 @@ td, th {
 
 </table>
 
-<button>Add</button>
+<form th:action="@{/web/addNewUser}" method="post">			
+	<p><input type="submit" value="Add user"/></p>
+</form>
 
 </body>
 </html>
