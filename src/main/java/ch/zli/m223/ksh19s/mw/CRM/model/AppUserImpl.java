@@ -55,6 +55,18 @@ public class AppUserImpl implements AppUser {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		this.passwordHash = encoder.encode(password);
 	}
+	
+	
+	public AppUserImpl(String name, String password, String [] roleNames, String[] teamNames, String[] injuryNames ) {
+		this();
+		this.name = name;
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		this.passwordHash = encoder.encode(password);
+		setRoles(roleNames);
+		setTeams(teamNames);
+		setInjuries(injuryNames);
+		
+	}
 
 	@Override
 	public Long getId() {
@@ -133,6 +145,27 @@ public class AppUserImpl implements AppUser {
 	@Override
 	public boolean isEnabled() {
 		return true;
+	}
+	
+	public void setRoles(String[] roleNames) {
+		this.roles = new ArrayList<>();
+		for(String role : roleNames) {
+			addRoleToList(new RoleImpl(role, this));
+		}
+	}
+	
+	public void setTeams(String[] teamNames) {
+		this.teams = new ArrayList<>();
+		for(String team : teamNames) {
+			addTeamToList(new TeamImpl(team, this));
+		}
+	}
+	
+	public void setInjuries(String[] injuryNames) {
+		this.injuries = new ArrayList<>();
+		for(String injury : injuryNames) {
+			addInjuryToList(new InjuryImpl(injury, this));
+		}
 	}
 
 }

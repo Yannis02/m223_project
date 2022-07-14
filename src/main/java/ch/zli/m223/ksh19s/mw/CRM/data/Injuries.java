@@ -7,5 +7,7 @@ public interface Injuries {
 	public static final String TORNACL = "Torn ACL";
 	public static final String CONCUSSION = "Concussion";
 	public static final String BROKENFINGER = "Broken finger";
+	
+	public static final String[] ALL_INJURIES = {LEFTKNEECONTUSION, BROKENRIBS, TORNACL, CONCUSSION, BROKENFINGER};
 
 }

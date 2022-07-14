@@ -34,5 +34,10 @@ public interface Teams {
 	public static final String BUCCANEERS = "Tampa Bay Buccaneers";
 	public static final String TITANS = "Tennessee Titans";
 	public static final String COMMANDERS = "Washington Commanders";
+	
+	public static final String[] ALL_TEAMS = {CARDINALS, FALCONS, RAVENS, BILLS, PANTHERS, BEARS, 
+			BENGALS, BROWNS, COWBOYS, BRONCOS, LIONS, PACKERS, TEXANS, COLTS, JAGUARS, CHIEFS, 
+			RAIDERS, CHARGERS, RAMS, DOLPHINS, VIKINGS, PATRIOTS, SAINTS, GIANTS, JETS, EAGLES, 
+			STEELERS, NINERS, SEAHAWKS, BUCCANEERS, TITANS, COMMANDERS};
 
 }

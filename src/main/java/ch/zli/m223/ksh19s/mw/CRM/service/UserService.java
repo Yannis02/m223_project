@@ -11,6 +11,7 @@ public interface UserService {
 	AppUser getUser(Long id);
 
 	AppUser insertUser(String name, String password);
+	AppUser insertNewUser(String name, String password, String[] roleNames, String[] teamNames, String[] injuryNames);
 
 	void deleteUserById(Long id);
 

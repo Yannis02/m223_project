@@ -29,6 +29,24 @@
 					
 						<input type="password" name="password" id="password"
 							th:value="${password}" placeholder="Passwort" required="true" />
+							<h3>Roles</h3>
+							<ul>
+							<li th:each="role : ${T(ch.zli.m223.ksh19s.mw.CRM.data.Roles).ALL_ROLES}">
+						  		<input type="checkbox" th:text="${role}" th:value="${role}" th:name="rolenames"/>
+							</li>
+						</ul>
+						<h3>Teams</h3>
+						<ul>
+						<li th:each="team : ${T(ch.zli.m223.ksh19s.mw.CRM.data.Teams).ALL_TEAMS}">
+						  		<input type="checkbox" th:text="${team}" th:value="${team}" th:name="teamnames"/>
+							</li>
+						</ul>
+						<h3>Injuries</h3>
+						<ul>
+						<li th:each="injury : ${T(ch.zli.m223.ksh19s.mw.CRM.data.Injuries).ALL_INJURIES}">
+						  		<input type="checkbox" th:text="${injury}" th:value="${injury}" th:name="injurynames"/>
+							</li>
+						</ul>
 					<p>
 						<input type="submit" value="Erstellen" />
 					</p>

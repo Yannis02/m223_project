@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import ch.zli.m223.ksh19s.mw.CRM.controller.dto.UserDto;
 import ch.zli.m223.ksh19s.mw.CRM.model.AppUser;
 import ch.zli.m223.ksh19s.mw.CRM.service.UserService;
 
@@ -51,12 +50,13 @@ public class UserWebController {
 	@RequestMapping("/web/saveUser")
 	public String saveNewUser(Model model, 
 		@RequestParam("username") String name,
-		@RequestParam("password") String password
-		//@RequestParam(value="rolenames", defaultValue="") String[] roles
-		)
+		@RequestParam("password") String password,
+		@RequestParam(value="rolenames", defaultValue="") String[] roles,
+		@RequestParam(value="teamnames", defaultValue="") String[] teams,
+		@RequestParam(value="injurynames", defaultValue="") String[] injuries)
 	{
 		// create a new user
-		AppUser user = userService.insertUser(name, password);
+		AppUser user = userService.insertNewUser(name, password, roles, teams, injuries);
 		if (user == null) {
 			// Show the form again
 			model.addAttribute("error", "userName already exists");
@@ -64,7 +64,7 @@ public class UserWebController {
 			model.addAttribute("password", password);
 			return "showUserNewForm";
 		}
-		return "redirect:/web/showUsers";
+		return "redirect:/web/users";
 	}
 	
 	@RequestMapping("/web/addNewUser")
