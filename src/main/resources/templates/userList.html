@@ -24,6 +24,24 @@ td, th {
 
 
 </style>
+
+<script>
+function getId() {
+	var startLink = "http://localhost:8080/web/deleteUser/";
+    var id = prompt("Id of user to be deleted");
+    if(id === null  || id == "") {
+        alert('Please enter an id');
+        return false;
+    }
+    else if (id != null) {
+        var link = startLink + id;
+        console.log(link);
+        window.location.href=link;
+        return true;
+    }
+}
+</script>
+
 <body>
 <h1>Users</h1>
 <table >
@@ -68,8 +86,8 @@ td, th {
 
 </table>
 
-
-
+<button>Add</button>
+<button type="button" onclick=getId() >Delete</button>
 
 </body>
 </html>

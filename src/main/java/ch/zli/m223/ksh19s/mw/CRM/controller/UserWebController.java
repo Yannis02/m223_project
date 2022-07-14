@@ -39,5 +39,11 @@ public class UserWebController {
 	String gotoLogedInPage() {
 		return "loged_in_page";
 	}
+	
+	@GetMapping("/web/deleteUser/{id}")
+	String deleteUser(@PathVariable("id") Long id) {
+		userService.deleteUserById(id);
+		return "redirect:/web/users";
+	}
 
 }
