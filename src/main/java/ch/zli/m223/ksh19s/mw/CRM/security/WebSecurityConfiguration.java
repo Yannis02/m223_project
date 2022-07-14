@@ -40,7 +40,15 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.and().logout().permitAll(); // logoutpage zugänglich für jeden
 	}
 
-	private void configureRest(HttpSecurity http) {
-	}
+	private void configureRest(HttpSecurity http) throws Exception {
+        http.authorizeHttpRequests()
+                .antMatchers("/").permitAll()
+                .antMatchers("/api/v1/users").hasAnyAuthority(Roles.ADMIN)
+                .antMatchers("/api/v1/**").hasAnyAuthority(Roles.USER, Roles.ADMIN)
+                .and()
+                .formLogin().permitAll()
+                .and()
+                .logout().permitAll();
+    }
 
 }
