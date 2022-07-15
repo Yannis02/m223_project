@@ -14,8 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ch.zli.m223.ksh19s.mw.CRM.controller.dto.RoleDto;
 import ch.zli.m223.ksh19s.mw.CRM.controller.dto.RoleInputDto;
-import ch.zli.m223.ksh19s.mw.CRM.controller.dto.UserDto;
-import ch.zli.m223.ksh19s.mw.CRM.controller.dto.UserInputDto;
 import ch.zli.m223.ksh19s.mw.CRM.service.RoleService;
 
 /**

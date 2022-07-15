@@ -8,8 +8,6 @@ import ch.zli.m223.ksh19s.mw.CRM.model.AppUser;
 import ch.zli.m223.ksh19s.mw.CRM.model.AppUserImpl;
 import ch.zli.m223.ksh19s.mw.CRM.model.Injury;
 import ch.zli.m223.ksh19s.mw.CRM.model.InjuryImpl;
-import ch.zli.m223.ksh19s.mw.CRM.model.Team;
-import ch.zli.m223.ksh19s.mw.CRM.model.TeamImpl;
 
 /**
  * Repository of the injury
